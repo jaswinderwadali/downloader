@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        vectorDrawables.useSupportLibrary = true
+
+    }
+
+
+
+    flavorDimensions "color"
+
+    productFlavors {
+        development {
+            applicationId "video.xdownloader.dev"
+            buildConfigField 'String', 'HOST', '"https://google.com"'
+            resValue "string", "app_name", "Xdownloader Dev"
+            buildConfigField 'Boolean', 'ISPROD', 'false'
+            versionCode 2
+            versionName "1.0.0"
+            dimension "color"
+
+        }
+
+        production {
+            applicationId "video.xdownloader"
+            buildConfigField 'String', 'HOST', '"https://google.com"'
+            resValue "string", "app_name", "Xdownloder"
+            buildConfigField 'Boolean', 'ISPROD', 'true'
+            versionCode 2
+            versionName "1.0.0"
+            dimension "color"
+
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled true
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+
+    }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile 'com.github.evgenyneu:js-evaluator-for-android:v3.0.0'
+
+
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.1'
+
+    compile 'org.jsoup:jsoup:1.7.3'
+
+    compile 'com.android.support:appcompat-v7:26.0.0'
+    compile 'com.android.support:design:26.0.0'
+    compile 'com.android.support:support-vector-drawable:26.0.0'
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+    compile 'com.snappydb:snappydb-lib:0.5.2'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.android.support:support-v4:26.0.0'
+    compile 'com.google.android.exoplayer:exoplayer:r2.5.1'
+    compile 'com.google.firebase:firebase-core:11.2.0'
+    compile 'com.google.firebase:firebase-crash:11.2.0'
+    compile 'com.google.firebase:firebase-messaging:11.2.0'
+    compile 'org.aspectj:aspectjrt:1.8.8'
+    compile 'com.googlecode.mp4parser:isoparser:1.1.17'
+
+}
+apply plugin: 'com.google.gms.google-services'
+
